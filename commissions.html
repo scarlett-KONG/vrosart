@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Commission a personalized original artwork by Rosagrata Vanessa. Custom oil paintings tailored to your vision.">
+    <meta name="keywords" content="art commission, custom painting, personalized artwork, oil painting commission">
+    <meta name="author" content="Rosagrata Vanessa">
+    
+    <title>Commissions | Rosagrata Vanessa</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">Rosagrata Vanessa</a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#originals">Originals</a></li>
+                    <li><a href="commissions.html">Commissions</a></li>
+                    <li><a href="prints.html">Prints</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><button class="login-btn">Log In</button></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="commissions-hero">
+            <div class="container">
+                <h1>Here you can order your original and personalized artwork</h1>
+            </div>
+        </section>
+        
+        <!-- Commissions Content -->
+        <section class="commissions-content section">
+            <div class="container">
+                <div class="commissions-grid">
+                    <!-- Commission Information -->
+                    <div class="commission-info">
+                        <h4>Commission</h4>
+                        <p>The process begins by filling out the form below.</p>
+                        
+                        <p>Once your requests and information have been processed, typically within 3 business days, I'll email you an invoice and a 50% deposit to confirm the commission, payable by card or PayPal.</p>
+                        
+                        <p>After 50% non-refundable deposit I will create a rough sketch of the concept for your approval before paintings begins and will keep you updated. Please note the initial 50% deposit is non-refundable, as it covers the time, planning, and materials invested up to that point.</p>
+                        
+                        <p>The remaining 50% is due upon completion.</p>
+                        
+                        <p>Minor revisions can be made after the sketch stage. Once painting begins, small adjustments are possible.</p>
+                        
+                        <p>Oil painting process takes 4-6 weeks (depending on size and details) plus time to dry 10-15 days.</p>
+                        
+                        <p>Delivery time depends on country you're located, it's about 1-2 weeks.</p>
+                        
+                        <p><strong>Free worldwide shipping.</strong></p>
+                    </div>
+                    
+                    <!-- Commission Form -->
+                    <div class="commission-form-container">
+                        <h4>Let's get started!</h4>
+                        
+                        <form id="commission-form" class="commission-form">
+                            <div class="form-group">
+                                <label for="fullname">Full Name *</label>
+                                <input type="text" id="fullname" name="fullname" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="commission-email">Email *</label>
+                                <input type="email" id="commission-email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Address *</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="size">Size (Price Vary) *</label>
+                                <select id="size" name="size" required>
+                                    <option value="">Select a size</option>
+                                    <option value="18x24">18 x 24 cm (320 €)</option>
+                                    <option value="24x30">24 x 30 cm (550€)</option>
+                                    <option value="30x40">30 x 40 cm (1000€)</option>
+                                    <option value="50x70">50 x 70 cm (1600 €)</option>
+                                    <option value="other">Others size</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Give me a brief overview of what you imagine for the piece (subject matter, color scheme, etc.) *</label>
+                                <textarea id="description" name="description" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-group file-upload-group">
+                                <label>Send me your reference photos</label>
+                                <button type="button" class="file-upload-btn">Add file</button>
+                                <input type="file" id="file-upload" name="files" multiple accept="image/*" class="file-upload-input">
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Rosagrata Vanessa</h3>
+                    <p>Italian painter and content creator</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="#">Terms and conditions</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright Vanessa Rosagrata - all rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
