@@ -362,6 +362,44 @@ class ProductHoverEffect {
 }
 
 // ===================================
+// HERO TEXT TYPE ANIMATION
+// ===================================
+class HeroTextAnimator {
+    constructor() {
+        this.heroText = document.querySelector('.hero-text');
+        if (this.heroText) {
+            this.init();
+        }
+    }
+
+    init() {
+        const elements = this.heroText.querySelectorAll('h1, p');
+        elements.forEach(el => this.wrapText(el));
+
+        // Trigger animation on next frame so transitions apply
+        requestAnimationFrame(() => {
+            this.heroText.classList.add('is-animated');
+        });
+    }
+
+    wrapText(element) {
+        const text = element.textContent.trim();
+        element.textContent = '';
+        const fragment = document.createDocumentFragment();
+
+        [...text].forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.classList.add('hero-char');
+            span.style.setProperty('--char-index', index);
+            fragment.appendChild(span);
+        });
+
+        element.appendChild(fragment);
+    }
+}
+
+// ===================================
 // INITIALIZE APP
 // ===================================
 class App {
@@ -388,6 +426,7 @@ class App {
         new ScrollAnimations();
         new LazyLoadImages();
         new ProductHoverEffect();
+        new HeroTextAnimator();
         
         console.log('VRosArt website initialized');
     }
