@@ -17,7 +17,8 @@
             var lang = supportedLangs.indexOf(browserLang) > -1 ? browserLang : defaultLang;
 
             // 跳转到对应语言的首页
-            window.location.replace('/' + lang + '/');
+            // Use relative path for GitHub Pages compatibility
+            window.location.replace(lang + '/');
         })();
     </script>
 </head>
