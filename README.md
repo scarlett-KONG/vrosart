@@ -18,6 +18,8 @@ This is a complete reimplementation of vrosart.com using modern web standards, f
 vrosart-website/
 │
 ├── index.html              # Home page with hero, products, and contact
+├── product-detail-site/    # Details about each product
+│   └── product-1.html      # Present the product 1
 ├── commissions.html        # Commission request page
 ├── prints.html             # Prints page (under construction)
 ├── about.html              # About/Bio page
@@ -29,52 +31,15 @@ vrosart-website/
 │   └── script.js          # Main JavaScript for interactivity
 │
 ├── images/                # Image assets directory
+│   └── product/           # save product figure
+│     └── product-1.jpeg        # paintining 1
 │   └── favicon.png        # Site favicon (placeholder)
 │
 └── README.md              # This file
 ```
 
-## 🚀 Features
 
-### Design Features
-- **Clean Typography**: Elegant serif headings with sans-serif body text
-- **Responsive Grid Layouts**: CSS Grid for product galleries and content sections
-- **Smooth Animations**: CSS transitions and subtle scroll animations
-- **Mobile-First Design**: Optimized for all screen sizes
 
-### Technical Features
-- **Semantic HTML5**: Proper use of semantic elements (header, nav, main, section, article, footer)
-- **Modern CSS3**: CSS custom properties (variables), Grid, Flexbox
-- **Vanilla JavaScript**: No frameworks or libraries required
-- **Form Validation**: Client-side form validation with proper feedback
-- **Mobile Menu**: Responsive navigation with smooth toggle
-- **Lazy Loading**: Images load only when needed
-- **Smooth Scrolling**: Enhanced user experience with smooth scroll behavior
-
-## 🎯 Pages
-
-### 1. Home (index.html)
-- Hero section with welcome message
-- Articles section
-- Product gallery (Originals)
-- Contact form
-- Full footer with social links
-
-### 2. Commissions (commissions.html)
-- Commission process information
-- Detailed pricing by size
-- Commission request form with file upload
-- Terms and conditions
-
-### 3. Prints (prints.html)
-- Coming soon section
-- Placeholder for future print products
-- Under construction notice
-
-### 4. About (about.html)
-- Artist biography
-- Portfolio image
-- Artistic philosophy and approach
 
 ## 💻 Setup & Usage
 
@@ -113,122 +78,28 @@ vrosart-website/
 
 ### Deployment
 
-This is a static website that can be deployed to any web hosting service:
+Add to Cart → Checkout (Stripe) → Payment confirmed → You get an email → You create a label on Easyship → Customer gets tracking link. 
 
-- **GitHub Pages**: Push to a GitHub repository and enable Pages
-- **Netlify**: Drag and drop the folder or connect to Git
-- **Vercel**: Deploy via CLI or Git integration
-- **Traditional hosting**: Upload files via FTP to your web server
+Your site → tells Stripe → "today's cart is: product A x1 + product B x2"
+Stripe → creates a fresh checkout URL just for this order → sends it back
+Your site → redirects customer to that unique URL
 
-## 🎨 Customization
+Customer clicks Checkout
+        ↓
+Your JS sends cart to a small server function (Vercel)
+        ↓
+Vercel function calls Stripe: "make a checkout for these items"
+        ↓
+Stripe returns: { url: "https://checkout.stripe.com/pay/cs_abc123" }
+        ↓
+Customer is redirected to that unique URL → pays → comes back to your success page
 
-### Colors
-Edit CSS variables in `css/style.css`:
-```css
-:root {
-    --primary-color: #000000;
-    --secondary-color: #ffffff;
-    --text-color: #2b2b2b;
-    --text-light: #666666;
-    --border-color: #e5e5e5;
-}
-```
+1. 给commissions 和 prints 添加背景和长方形
+2. 补齐所有绘画
+3. 法语页面
+4. 制作好配适手机版本
+5. 参考document
 
-### Typography
-Edit font families in `css/style.css`:
-```css
-:root {
-    --font-primary: 'Avenir', 'Helvetica Neue', Arial, sans-serif;
-    --font-heading: 'Didot', 'Bodoni MT', 'Times New Roman', serif;
-}
-```
-
-### Spacing
-Edit spacing variables:
-```css
-:root {
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 3rem;
-    --spacing-xl: 4rem;
-}
-```
-
-## 📱 Responsive Breakpoints
-
-- **Desktop**: 1200px and above
-- **Tablet**: 768px to 1199px
-- **Mobile**: Below 768px
-
-## 🔧 JavaScript Modules
-
-The JavaScript is organized into classes for maintainability:
-
-- `MobileMenu`: Handles mobile navigation toggle
-- `HeaderScroll`: Manages header scroll effects
-- `ContactForm`: Contact form validation and submission
-- `CommissionForm`: Commission form handling with file uploads
-- `SmoothScroll`: Smooth scrolling for anchor links
-- `ScrollAnimations`: Fade-in animations on scroll
-- `LazyLoadImages`: Lazy loading for images
-- `ProductHoverEffect`: Product card hover interactions
-
-## 🌐 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 📝 Form Integration
-
-The forms currently use JavaScript to simulate submissions. To make them functional:
-
-1. **Backend Integration**: 
-   - Set up a backend API endpoint
-   - Update the form submission handlers in `js/script.js`
-   - Replace `simulateAPICall()` with actual fetch requests
-
-2. **Email Service Integration**:
-   - Use services like FormSpree, EmailJS, or SendGrid
-   - Add their script/API integration
-   - Update form action URLs
-
-3. **CMS Integration**:
-   - Connect to a headless CMS
-   - Update product data to load dynamically
-   - Implement admin panel for content management
-
-## 🖼️ Images
-
-All images in this implementation are loaded from the original website's CDN. To use your own images:
-
-1. Place images in the `images/` folder
-2. Update image URLs in HTML files
-3. Optimize images for web (WebP format recommended)
-4. Consider using responsive images with `<picture>` elements
-
-## ♿ Accessibility
-
-The website follows accessibility best practices:
-- Semantic HTML structure
-- ARIA labels where needed
-- Keyboard navigation support
-- Focus indicators
-- Alt text for images
-- Proper heading hierarchy
-- Form labels and validation messages
-
-## 🚀 Performance Optimization
-
-- CSS is minified for production
-- JavaScript uses modern ES6+ features
-- Images are lazy-loaded
-- No external dependencies (lightweight)
-- Mobile-first responsive design
-- Minimal HTTP requests
 
 ## 📄 License
 

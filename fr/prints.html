@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Learn about Rosagrata Vanessa, Italian painter living in Paris. Discover her artistic journey and creative philosophy.">
-    <meta name="keywords" content="artist bio, painter biography, Italian artist, contemporary art">
+    <meta name="description" content="Original prints by Rosagrata Vanessa. High-quality art prints coming soon.">
+    <meta name="keywords" content="art prints, original prints, art reproductions, limited edition prints">
     <meta name="author" content="Rosagrata Vanessa">
     
-    <title>About | Rosagrata Vanessa</title>
+    <title>Prints | Rosagrata Vanessa</title>
+    <link rel="alternate" hreflang="en" href="/en/prints.html">
+    <link rel="alternate" hreflang="fr" href="/fr/prints.html">
+    <link rel="alternate" hreflang="x-default" href="/en/prints.html">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/logo.png">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <!-- Header -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Rosagrata Vanessa logo" class="logo-image">
-                    <span>Rosagrata Vanessa</span>
-                </a>
+                <a href="index.html">Rosagrata Vanessa</a>
             </div>
             
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#originals">Originals</a></li>
+                    <li><a href="index.html#originals">Originals</a></li>
                     <li><a href="commissions.html">Commissions</a></li>
                     <li><a href="prints.html">Prints</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li class="lang-switcher">
+                        <a href="../en/prints.html">EN</a>
+                        <span>/</span>
+                        <span class="active">FR</span>
+                    </li>
                     <li><button class="login-btn">Log In</button></li>
                 </ul>
             </nav>
@@ -49,34 +54,29 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="about-hero">
+        <section class="prints-hero">
             <div class="container">
-                <h1>Bio</h1>
+                <h1><span class="bio-label"><em>Prints</em></span></h1>
             </div>
         </section>
         
-        <!-- About Content -->
-        <section class="about-content section">
+        <!-- Prints Content -->
+        <section class="prints-content section">
             <div class="container">
-                <div class="bio-section">
-                    <div class="bio-image">
-                        <img src="https://static.wixstatic.com/media/7d3dc7_e53eb8c77ee742dea7db9572b588e2e0~mv2.jpg/v1/fill/w_480,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/7d3dc7_e53eb8c77ee742dea7db9572b588e2e0~mv2.jpg" alt="Rosagrata Vanessa - Artist Portrait">
-                    </div>
-                    
-                    <div class="bio-text">
-                        
-                        <p>I left Italy at the age of 22 to move near Paris to follow my family, where I still live today.</p>
-                        
-                        <p>Around the age of 30, after a decade away from the art world, I rediscovered my passion for creativity, which had always been with me, particularly enjoying oil painting and mixed media.</p>
-                        
-                        <p>Since I was a child, I have cultivated a love of beauty and aesthetics, fascinated by the delicate and gentle side of emotions.</p>
-                        
-                        <p>Today, through my art, I figuratively offer a universe in which dream and reality intertwine, inviting the viewer to explore the magic that resides in everyday life.</p>
-                        
-                        <p>My artistic approach draws inspiration from mythological and folk traditions, which I enjoy revisiting from a contemporary perspective. I take pleasure in experimenting with characters from these ancient tales, giving them a new life, closer to our current sensibilities.</p>
-                        
-                        <p>A common thread runs through my works: "agro-dolce," this blend of sweetness and delicacy tinged with a subtle bitterness. It is within this fragile balance that I seek to express my emotions and invite the viewer to a sensitive and poetic interpretation of my creations.</p>
-                    </div>
+                <div class="prints-notice">
+                    <h2>Service under construction</h2>
+                    <p>Will be available soon</p>
+                </div>
+                
+                <div class="section-header mt-lg">
+                    <h2>Prints</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Empty state - products will be added when service launches -->
+                    <p class="text-center" style="grid-column: 1/-1; padding: 4rem 0; color: #999;">
+                        We don't have any products to show right now.
+                    </p>
                 </div>
             </div>
         </section>
@@ -125,6 +125,6 @@
     </footer>
     
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

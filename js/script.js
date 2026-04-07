@@ -400,6 +400,191 @@ class HeroTextAnimator {
 }
 
 // ===================================
+// PRODUCT DETAIL PAGE
+// ===================================
+class ProductDetailPage {
+    constructor() {
+        // Only run on product detail pages
+        if (!document.querySelector('.product-detail-page')) return;
+        this.init();
+    }
+
+    init() {
+        this.initGallery();
+        this.initAccordion();
+        this.initCart();
+    }
+
+    // ── 1. Image Gallery ──
+    initGallery() {
+        const mainImage = document.getElementById('mainImage');
+        const thumbs    = document.querySelectorAll('#thumbsContainer img');
+        if (!mainImage || !thumbs.length) return;
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function () {
+                mainImage.src = this.dataset.full;
+                thumbs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    }
+
+    // ── 2. Accordion ──
+    initAccordion() {
+        document.querySelectorAll('[data-accordion]').forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            if (header) {
+                header.addEventListener('click', () => item.classList.toggle('open'));
+            }
+        });
+    }
+
+    // ── 3. Cart ──
+    initCart() {
+        // Cart state (resets on page reload; swap for localStorage for persistence)
+        let cart = [];
+
+        const cartSidebar  = document.getElementById('cartSidebar');
+        const cartOverlay  = document.getElementById('cartOverlay');
+        const cartClose    = document.getElementById('cartClose');
+        const cartItemsEl  = document.getElementById('cartItems');
+        const cartTitle    = document.getElementById('cartTitle');
+        const cartTotal    = document.getElementById('cartTotal');
+        const cartBadge    = document.getElementById('cartBadge');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const cartIconBtn  = document.getElementById('cartIconBtn');
+        const checkoutBtn  = document.getElementById('checkoutBtn');
+
+        if (!cartSidebar) return;
+
+        // Open / close helpers
+        const openCart = () => {
+            cartSidebar.classList.add('open');
+            cartOverlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        };
+        const closeCart = () => {
+            cartSidebar.classList.remove('open');
+            cartOverlay.classList.remove('visible');
+            document.body.style.overflow = '';
+        };
+
+        cartClose.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+        if (cartIconBtn) cartIconBtn.addEventListener('click', openCart);
+
+        // Render cart contents
+        const renderCart = () => {
+            let totalQty = 0, totalPrice = 0;
+            cartItemsEl.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p style="color:#999;font-size:.85rem;">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, idx) => {
+                    totalQty   += item.qty;
+                    totalPrice += item.price * item.qty;
+
+                    const el = document.createElement('div');
+                    el.className = 'cart-item';
+                    el.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}">
+                        <div>
+                            <p class="cart-item-name">${item.name}</p>
+                            <p class="cart-item-price">€${item.price.toFixed(2)}</p>
+                            <input type="number" class="cart-item-qty" value="${item.qty}" min="1" data-idx="${idx}">
+                        </div>
+                        <button class="cart-item-remove" data-idx="${idx}" aria-label="Remove item">✕</button>
+                    `;
+                    cartItemsEl.appendChild(el);
+                });
+
+                cartItemsEl.querySelectorAll('.cart-item-qty').forEach(input => {
+                    input.addEventListener('change', function () {
+                        const i = parseInt(this.dataset.idx);
+                        cart[i].qty = Math.max(1, parseInt(this.value) || 1);
+                        renderCart();
+                    });
+                });
+
+                cartItemsEl.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        cart.splice(parseInt(this.dataset.idx), 1);
+                        renderCart();
+                    });
+                });
+            }
+
+            cartTitle.textContent = `Cart (${totalQty} item${totalQty !== 1 ? 's' : ''})`;
+            cartTotal.textContent = `€${totalPrice.toFixed(2)}`;
+            cartBadge.textContent = totalQty;
+            cartBadge.classList.toggle('visible', totalQty > 0);
+        };
+
+        // Add to cart
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', () => {
+                const qty    = parseInt(document.getElementById('qtyInput').value) || 1;
+                const name   = addToCartBtn.dataset.name   || 'Artwork';
+                const price  = parseFloat(addToCartBtn.dataset.price) || 0;
+                const imgSrc = document.getElementById('mainImage').src;
+
+                const existing = cart.find(i => i.name === name);
+                if (existing) {
+                    existing.qty += qty;
+                } else {
+                    cart.push({ name, price, qty, img: imgSrc });
+                }
+
+                renderCart();
+
+                addToCartBtn.textContent = '✓ Added!';
+                addToCartBtn.classList.add('added');
+                setTimeout(() => {
+                    addToCartBtn.textContent = 'Add to Cart';
+                    addToCartBtn.classList.remove('added');
+                }, 1500);
+
+                openCart();
+            });
+        }
+
+        // Checkout — sends cart to /api/checkout (Stripe)
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', async () => {
+                if (cart.length === 0) { alert('Your cart is empty!'); return; }
+
+                checkoutBtn.textContent = 'Processing...';
+                checkoutBtn.disabled = true;
+
+                try {
+                    const currentLang = document.documentElement.lang || 'en';
+
+                    const response = await fetch('/api/checkout', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ cartItems: cart, lang: currentLang }),
+                    });
+
+                    if (!response.ok) throw new Error('Server error: ' + response.status);
+
+                    const data = await response.json();
+                    window.location.href = data.url;
+                } catch (error) {
+                    console.error('Checkout error:', error);
+                    alert('Something went wrong. Please try again.');
+                    checkoutBtn.textContent = 'Checkout';
+                    checkoutBtn.disabled = false;
+                }
+            });
+        }
+
+        renderCart();
+    }
+}
+
+// ===================================
 // INITIALIZE APP
 // ===================================
 class App {
@@ -427,6 +612,7 @@ class App {
         new LazyLoadImages();
         new ProductHoverEffect();
         new HeroTextAnimator();
+        new ProductDetailPage();
         
         console.log('VRosArt website initialized');
     }

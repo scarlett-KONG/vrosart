@@ -1,0 +1,13 @@
+{
+  "name": "vrosart-website",
+  "version": "1.0.0",
+  "description": "VRosArt Website - Artist Rosagrata Vanessa portfolio and e-commerce",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server -p 8000",
+    "dev": "npx vercel dev"
+  },
+  "dependencies": {
+    "stripe": "^14.25.0"
+  }
+}
