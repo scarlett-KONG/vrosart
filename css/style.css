@@ -1093,7 +1093,10 @@ main {
    PRINTS PAGE
    =================================== */
 .prints-hero {
-    background: url('../images/prints-background.jpeg') center / 100% 100% no-repeat;
+    background-image: url('../images/prints-background.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: var(--spacing-xl) 0;
     text-align: center;
 }
@@ -1120,7 +1123,10 @@ main {
    ABOUT PAGE
    =================================== */
 .about-hero {
-    background: url('../images/bio-background.png') center / cover no-repeat;
+    background-image: url('../images/bio-background.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: var(--spacing-xl) 0;
     text-align: center;
 }
